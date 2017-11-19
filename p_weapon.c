@@ -520,7 +520,7 @@ GRENADE
 ======================================================================
 */
 
-#define GRENADE_TIMER		3.0
+#define GRENADE_TIMER		5.0 //JW - Original value was 3.0
 #define GRENADE_MINSPEED	400
 #define GRENADE_MAXSPEED	800
 
@@ -529,7 +529,7 @@ void weapon_grenade_fire (edict_t *ent, qboolean held)
 	vec3_t	offset;
 	vec3_t	forward, right;
 	vec3_t	start;
-	int		damage = 125;
+	int		damage = 925; //JW - Original value was 125
 	float	timer;
 	int		speed;
 	float	radius;
@@ -631,8 +631,16 @@ void Weapon_Grenade (edict_t *ent)
 		{
 			if (!ent->client->grenade_time)
 			{
-				ent->client->grenade_time = level.time + GRENADE_TIMER + 0.2;
-				ent->client->weapon_sound = gi.soundindex("weapons/hgrenc1b.wav");
+				
+				//If the difficulty is on easy, give the player an extra 10 seconds
+				if (skill->value == 0) {
+					ent->client->grenade_time = level.time + GRENADE_TIMER + 10.2; 
+				}
+
+				else {
+					ent->client->grenade_time = level.time + GRENADE_TIMER + 0.2;
+					ent->client->weapon_sound = gi.soundindex("weapons/hgrenc1b.wav");
+				}
 			}
 
 			// they waited too long, detonate it in their hand
@@ -810,7 +818,7 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 	VectorScale (forward, -2, ent->client->kick_origin);
 	ent->client->kick_angles[0] = -1;
 
-	fire_blaster (ent, start, forward, damage * 1.80, 5000, effect, hyper);
+	fire_blaster (ent, start, forward, damage, 1000, effect, hyper);
 
 	// send muzzle flash
 	gi.WriteByte (svc_muzzleflash);

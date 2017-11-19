@@ -1290,11 +1290,15 @@ always owned, never in the world
 /* precache */ "weapons/blastf1a.wav misc/lasfly.wav"
 	},
 
+
+		
+
+
 /*QUAKED weapon_shotgun (.3 .3 1) (-16 -16 -16) (16 16 16)
 */
 	{
 		"weapon_shotgun", 
-		Pickup_Weapon,
+		NULL, //JW - All the weapons will be set to 'NULL' for picking up
 		Use_Weapon,
 		Drop_Weapon,
 		Weapon_Shotgun,
@@ -1317,7 +1321,7 @@ always owned, never in the world
 */
 	{
 		"weapon_supershotgun", 
-		Pickup_Weapon,
+		NULL,
 		Use_Weapon,
 		Drop_Weapon,
 		Weapon_SuperShotgun,
@@ -1340,7 +1344,7 @@ always owned, never in the world
 */
 	{
 		"weapon_machinegun", 
-		Pickup_Weapon,
+		NULL,
 		Use_Weapon,
 		Drop_Weapon,
 		Weapon_Machinegun,
@@ -1363,7 +1367,7 @@ always owned, never in the world
 */
 	{
 		"weapon_chaingun", 
-		Pickup_Weapon,
+		NULL,
 		Use_Weapon,
 		Drop_Weapon,
 		Weapon_Chaingun,
@@ -1409,7 +1413,7 @@ always owned, never in the world
 */
 	{
 		"weapon_grenadelauncher",
-		Pickup_Weapon,
+		NULL,
 		Use_Weapon,
 		Drop_Weapon,
 		Weapon_GrenadeLauncher,
@@ -1432,7 +1436,7 @@ always owned, never in the world
 */
 	{
 		"weapon_rocketlauncher",
-		Pickup_Weapon,
+		NULL,
 		Use_Weapon,
 		Drop_Weapon,
 		Weapon_RocketLauncher,
@@ -1455,7 +1459,7 @@ always owned, never in the world
 */
 	{
 		"weapon_hyperblaster", 
-		Pickup_Weapon,
+		NULL,
 		Use_Weapon,
 		Drop_Weapon,
 		Weapon_HyperBlaster,
@@ -1478,7 +1482,7 @@ always owned, never in the world
 */
 	{
 		"weapon_railgun", 
-		Pickup_Weapon,
+		NULL,
 		Use_Weapon,
 		Drop_Weapon,
 		Weapon_Railgun,
@@ -1501,7 +1505,7 @@ always owned, never in the world
 */
 	{
 		"weapon_bfg",
-		Pickup_Weapon,
+		NULL,
 		Use_Weapon,
 		Drop_Weapon,
 		Weapon_BFG,
@@ -1528,7 +1532,7 @@ always owned, never in the world
 */
 	{
 		"ammo_shells",
-		Pickup_Ammo,
+		NULL,
 		NULL,
 		Drop_Ammo,
 		NULL,
@@ -1551,7 +1555,7 @@ always owned, never in the world
 */
 	{
 		"ammo_bullets",
-		Pickup_Ammo,
+		NULL,
 		NULL,
 		Drop_Ammo,
 		NULL,
@@ -1574,7 +1578,7 @@ always owned, never in the world
 */
 	{
 		"ammo_cells",
-		Pickup_Ammo,
+		NULL,
 		NULL,
 		Drop_Ammo,
 		NULL,
@@ -1597,7 +1601,7 @@ always owned, never in the world
 */
 	{
 		"ammo_rockets",
-		Pickup_Ammo,
+		NULL,
 		NULL,
 		Drop_Ammo,
 		NULL,
@@ -1620,7 +1624,7 @@ always owned, never in the world
 */
 	{
 		"ammo_slugs",
-		Pickup_Ammo,
+		NULL,
 		NULL,
 		Drop_Ammo,
 		NULL,
