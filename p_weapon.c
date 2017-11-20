@@ -520,7 +520,7 @@ GRENADE
 ======================================================================
 */
 
-#define GRENADE_TIMER		5.0 //JW - Original value was 3.0
+#define GRENADE_TIMER		20.0 //JW - Original value was 3.0
 #define GRENADE_MINSPEED	400
 #define GRENADE_MAXSPEED	800
 
@@ -632,15 +632,17 @@ void Weapon_Grenade (edict_t *ent)
 			if (!ent->client->grenade_time)
 			{
 				
-				//If the difficulty is on easy, give the player an extra 10 seconds
-				if (skill->value == 0) {
-					ent->client->grenade_time = level.time + GRENADE_TIMER + 10.2; 
-				}
-
-				else {
+				//JW: If the difficulty is on easy, give the player an extra 20 seconds. On medium, give 'em 10. On hard, default.
+				if (skill->value == 0) 
+					ent->client->grenade_time = level.time + GRENADE_TIMER + 20.2;
+				if (skill->value == 1)
+					ent->client->grenade_time = level.time + GRENADE_TIMER + 10.2;
+				else 
 					ent->client->grenade_time = level.time + GRENADE_TIMER + 0.2;
-					ent->client->weapon_sound = gi.soundindex("weapons/hgrenc1b.wav");
-				}
+				
+
+				ent->client->weapon_sound = gi.soundindex("weapons/hgrenc1b.wav");
+
 			}
 
 			// they waited too long, detonate it in their hand
