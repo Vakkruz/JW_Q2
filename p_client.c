@@ -597,6 +597,14 @@ void InitClientPersistant (gclient_t *client)
 
 	client->pers.weapon = item;
 
+	//JW - Player is now equipped with grenades at spawn
+	item = FindItem("Grenades");
+	client->pers.selected_item = ITEM_INDEX(item);
+	client->pers.inventory[client->pers.selected_item] = 1;
+
+	client->pers.weapon = item;
+
+
 	client->pers.health			= 100;
 	client->pers.max_health		= 100;
 
