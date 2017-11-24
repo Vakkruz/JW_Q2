@@ -677,6 +677,43 @@ char *single_statusbar =
 "	pic	9 "
 "endif "
 
+
+// JW - Timer2, which handles the positioning of the grenade timer.
+"if 16"
+"	yb	-48"
+"	xr	-58"
+"	num 2	17"
+"	xr	-24"
+"	pic	16"
+"end if"
+
+
+/*
+
+// JW - Copied from the Q2 tutorial pages. Maybe used later on for extra
+// powerups. We'll see.
+
+// timer3			// New
+"if 18 "			// New. If STAT_TIMER3_ICON is not zero, then do
+"	yb	-72 "		// New
+"	xr	-58 "		// New
+"	num	2	19 "	// New. Display 2-digits with value from stat-array at index 19
+"	xr	-24 "		// New
+"	pic	18 "		// New. Display icon
+"endif "			// New
+
+// timer4			// New
+"if 20 "			// New. If STAT_TIMER4_ICON is not zero, then do
+"	yb	-96 "		// New
+"	xr	-58 "		// New
+"	num	2	21 "	// New. Display 2-digits with value from stat-array at index 21
+"	xr	-24 "		// New
+"	pic	20 "		// New. Display icon
+"endif "
+
+*/
+
+
 //  help / weapon icon 
 "if 11 "
 "	xv	148 "
