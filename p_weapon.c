@@ -634,11 +634,11 @@ void Weapon_Grenade (edict_t *ent)
 				
 				//JW: If the difficulty is on easy, give the player an extra 20 seconds. On medium, give 'em 10. On hard, default.
 				if (skill->value == 0) 
-					ent->client->grenade_time = level.time + GRENADE_TIMER + 20.2;
+					ent->client->grenade_time = level.time + GRENADE_TIMER + 20;
 				if (skill->value == 1)
-					ent->client->grenade_time = level.time + GRENADE_TIMER + 10.2;
+					ent->client->grenade_time = level.time + GRENADE_TIMER + 10;
 				else 
-					ent->client->grenade_time = level.time + GRENADE_TIMER + 0.2;
+					ent->client->grenade_time = level.time + GRENADE_TIMER;
 				
 
 				ent->client->weapon_sound = gi.soundindex("weapons/hgrenc1b.wav");

@@ -487,13 +487,12 @@ void G_SetStats (edict_t *ent)
 
 	if (ent->client->grenade_time) {
 		//gi.bprintf(PRINT_HIGH, "it works.\n");
+		gi.bprintf(PRINT_HIGH, "%i\n", (int)((ent->client->grenade_time - level.framenum) / -10));
 		ent->client->ps.stats[STAT_TIMER2_ICON] = gi.imageindex("a_grenades");
-		ent->client->ps.stats[STAT_TIMER2] = (ent->client->grenade_time);
-		gi.bprintf(PRINT_HIGH, "%f\n", ent->client->grenade_time);
+		ent->client->ps.stats[STAT_TIMER2] = (int)((ent->client->grenade_time - level.framenum) / -10);
 	}
 	else
 	{
-		//gi.bprintf(PRINT_HIGH, "it ain't workin.\n");
 		ent->client->ps.stats[STAT_TIMER2_ICON] = 0;
 		ent->client->ps.stats[STAT_TIMER2] = 0;
 	}
