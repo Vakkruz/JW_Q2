@@ -926,6 +926,11 @@ struct gclient_s
 	float		breather_framenum;
 	float		enviro_framenum;
 
+	//JW POWERUPS
+	float		sneaker_framenum;
+
+
+
 	qboolean	grenade_blew_up;
 	float		grenade_time;
 	int			silencer_shots;

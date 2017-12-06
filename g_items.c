@@ -387,6 +387,21 @@ void	Use_Invulnerability (edict_t *ent, gitem_t *item)
 	gi.sound(ent, CHAN_ITEM, gi.soundindex("items/protect.wav"), 1, ATTN_NORM, 0);
 }
 
+//JW ========================================================================
+
+void	Use_Sneaker(edict_t *ent, gitem_t *item) {
+
+	ent->client->pers.inventory[ITEM_INDEX(item)]--;
+	ValidateSelectedItem(ent);
+
+	if (ent->client->sneaker_framenum > level.framenum)
+		ent->client->sneaker_framenum += 300;
+	else
+		ent->client->sneaker_framenum = level.framenum + 300;
+}
+
+
+
 //======================================================================
 
 void	Use_Silencer (edict_t *ent, gitem_t *item)
@@ -399,6 +414,10 @@ void	Use_Silencer (edict_t *ent, gitem_t *item)
 }
 
 //======================================================================
+
+
+
+
 
 qboolean Pickup_Key (edict_t *ent, edict_t *other)
 {
@@ -1761,6 +1780,28 @@ always owned, never in the world
 		0,
 /* precache */ "items/airout.wav"
 	},
+
+	{
+		"item_sneaker",
+		Pickup_Powerup,
+		Use_Sneaker,
+		Drop_General,
+		NULL,
+		"items/pkup.wav",
+		NULL, EF_ROTATE,
+		NULL,
+		"w_chaingun",
+		"Sneaker Man",
+		2,
+		60,
+		NULL,
+		IT_POWERUP,
+		0,
+		NULL,
+		0,
+		/* precache */ ""
+	},
+
 
 /*QUAKED item_ancient_head (.3 .3 1) (-16 -16 -16) (16 16 16)
 Special item that gives +2 to maximum health
