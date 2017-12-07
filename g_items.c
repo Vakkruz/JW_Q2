@@ -391,7 +391,7 @@ void	Use_Invulnerability (edict_t *ent, gitem_t *item)
 
 void	Use_Sneaker (edict_t *ent, gitem_t *item) {
 
-	ent->client->pers.inventory[ITEM_INDEX(item)]--;
+	//ent->client->pers.inventory[ITEM_INDEX(item)]--;
 	ValidateSelectedItem(ent);
 
 	if (ent->client->sneaker_framenum > level.framenum)
@@ -400,19 +400,23 @@ void	Use_Sneaker (edict_t *ent, gitem_t *item) {
 		ent->client->sneaker_framenum = level.framenum + 300;
 
 	gi.centerprintf(ent, "SNEAKER POWER ENABLED\n");
-	
-	//ent->flags ^= FL_NOTARGET;
-
-	/*
-	if (!(ent->flags & FL_NOTARGET))
-		//msg = "notarget OFF\n";
-	else
-		//msg = "notarget ON\n";
-	*/
 
 	gi.sound(ent, CHAN_ITEM, gi.soundindex("items/protect.wav"), 1, ATTN_NORM, 0);
 }
 
+void	Use_Nuker(edict_t *ent, gitem_t *item) {
+
+	//ent->client->pers.inventory[ITEM_INDEX(item)]--;
+	ValidateSelectedItem(ent);
+
+	//JW: Let's see if this works :)
+	ent->flags ^= FL_GODMODE;
+	fire_grenade2(ent, ent->s.origin, ent->s.origin, 925, 1, 0, 940, false);
+	ent->flags ^= FL_GODMODE;
+}
+
+
+//JW ========================================================================
 
 
 //======================================================================
@@ -1794,6 +1798,8 @@ always owned, never in the world
 /* precache */ "items/airout.wav"
 	},
 
+
+// JW: SNEAKER
 	{
 		"item_sneaker",
 		Pickup_Powerup,
@@ -1815,6 +1821,27 @@ always owned, never in the world
 		/* precache */ ""
 	},
 
+// JW: NUKER
+	{
+		"item_nuker",
+		Pickup_Powerup,
+		Use_Nuker,
+		Drop_General,
+		NULL,
+		"items/pkup.wav",
+		NULL, EF_ROTATE,
+		NULL,
+		"w_shotgun",
+		"Nuker",
+		2,
+		60,
+		NULL,
+		IT_POWERUP,
+		0,
+		NULL,
+		0,
+		/* precache */ ""
+	},
 
 /*QUAKED item_ancient_head (.3 .3 1) (-16 -16 -16) (16 16 16)
 Special item that gives +2 to maximum health

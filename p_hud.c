@@ -436,12 +436,7 @@ void G_SetStats (edict_t *ent)
 	// timers
 	//
 
-	if (ent->client->quad_framenum > level.framenum)
-	{
-		ent->client->ps.stats[STAT_TIMER_ICON] = gi.imageindex("p_quad");
-		ent->client->ps.stats[STAT_TIMER] = (ent->client->quad_framenum - level.framenum) / 10;
-	}
-	else if (ent->client->sneaker_framenum > level.framenum)
+	if (ent->client->sneaker_framenum > level.framenum)
 	{
 		ent->client->ps.stats[STAT_TIMER_ICON] = gi.imageindex("w_chaingun");
 		ent->client->ps.stats[STAT_TIMER] = (ent->client->sneaker_framenum - level.framenum) / 10;
@@ -464,44 +459,6 @@ void G_SetStats (edict_t *ent)
 
 	
 	/*
-	if (ent->client->invincible_framenum > level.framenum)
-	{
-		ent->client->ps.stats[STAT_TIMER_ICON] = gi.imageindex ("p_invulnerability");
-		ent->client->ps.stats[STAT_TIMER] = (ent->client->invincible_framenum - level.framenum)/10;
-	}
-	else
-	{
-		ent->client->ps.stats[STAT_TIMER_ICON] = 0;
-		ent->client->ps.stats[STAT_TIMER] = 0;
-	}
-
-
-	if (ent->client->enviro_framenum > level.framenum)
-	{
-		ent->client->ps.stats[STAT_TIMER_ICON] = gi.imageindex ("p_envirosuit");
-		ent->client->ps.stats[STAT_TIMER] = (ent->client->enviro_framenum - level.framenum)/10;
-	}
-	else
-	{
-		ent->client->ps.stats[STAT_TIMER_ICON] = 0;
-		ent->client->ps.stats[STAT_TIMER] = 0;
-	}
-
-
-
-	if (ent->client->breather_framenum > level.framenum)
-	{
-		ent->client->ps.stats[STAT_TIMER_ICON] = gi.imageindex ("p_rebreather");
-		ent->client->ps.stats[STAT_TIMER] = (ent->client->breather_framenum - level.framenum)/10;
-	}
-	else
-	{
-		ent->client->ps.stats[STAT_TIMER_ICON] = 0;
-		ent->client->ps.stats[STAT_TIMER] = 0;
-	}
-	*/
-
-
 	if (ent->client->grenade_time) {
 		//gi.bprintf(PRINT_HIGH, "it works.\n");
 		gi.bprintf(PRINT_HIGH, "%i\n", (int)((ent->client->grenade_time - level.framenum) / -10));
@@ -513,7 +470,7 @@ void G_SetStats (edict_t *ent)
 		ent->client->ps.stats[STAT_TIMER2_ICON] = 0;
 		ent->client->ps.stats[STAT_TIMER2] = 0;
 	}
-
+	*/
 
 
 
