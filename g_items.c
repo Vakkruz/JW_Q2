@@ -389,7 +389,7 @@ void	Use_Invulnerability (edict_t *ent, gitem_t *item)
 
 //JW ========================================================================
 
-void	Use_Sneaker(edict_t *ent, gitem_t *item) {
+void	Use_Sneaker (edict_t *ent, gitem_t *item) {
 
 	ent->client->pers.inventory[ITEM_INDEX(item)]--;
 	ValidateSelectedItem(ent);
@@ -398,6 +398,19 @@ void	Use_Sneaker(edict_t *ent, gitem_t *item) {
 		ent->client->sneaker_framenum += 300;
 	else
 		ent->client->sneaker_framenum = level.framenum + 300;
+
+	gi.centerprintf(ent, "SNEAKER POWER ENABLED\n");
+	
+	//ent->flags ^= FL_NOTARGET;
+
+	/*
+	if (!(ent->flags & FL_NOTARGET))
+		//msg = "notarget OFF\n";
+	else
+		//msg = "notarget ON\n";
+	*/
+
+	gi.sound(ent, CHAN_ITEM, gi.soundindex("items/protect.wav"), 1, ATTN_NORM, 0);
 }
 
 

@@ -526,7 +526,11 @@ void player_die (edict_t *self, edict_t *inflictor, edict_t *attacker, int damag
 	self->client->invincible_framenum = 0;
 	self->client->breather_framenum = 0;
 	self->client->enviro_framenum = 0;
+	self->client->sneaker_framenum = 0;
 	self->flags &= ~FL_POWER_ARMOR;
+
+	//JW
+	self->flags &= ~FL_NOTARGET;
 
 	if (self->health < -40)
 	{	// gib
@@ -597,14 +601,14 @@ void InitClientPersistant (gclient_t *client)
 
 	client->pers.weapon = item;
 
-	//JW - Player is now equipped with grenades at spawn
+	//JW - Player is now equipped with grenades and powerups at spawn
 	item = FindItem("Grenades");
 	client->pers.selected_item = ITEM_INDEX(item);
 	client->pers.inventory[client->pers.selected_item] = 1;
 
 	client->pers.weapon = item;
 
-	item = FindItem("Quad Damage");
+	item = FindItem("Sneaker Man");
 	client->pers.selected_item = ITEM_INDEX(item);
 	client->pers.inventory[client->pers.selected_item] = 1;
 
