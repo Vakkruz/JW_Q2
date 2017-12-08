@@ -438,39 +438,65 @@ void G_SetStats (edict_t *ent)
 
 	if (ent->client->sneaker_framenum > level.framenum)
 	{
-		ent->client->ps.stats[STAT_TIMER_ICON] = gi.imageindex("w_chaingun");
-		ent->client->ps.stats[STAT_TIMER] = (ent->client->sneaker_framenum - level.framenum) / 10;
-	}
-	else if (ent->client->enviro_framenum > level.framenum)
-	{
-		ent->client->ps.stats[STAT_TIMER_ICON] = gi.imageindex("p_envirosuit");
-		ent->client->ps.stats[STAT_TIMER] = (ent->client->enviro_framenum - level.framenum) / 10;
-	}
-	else if (ent->client->breather_framenum > level.framenum)
-	{
-		ent->client->ps.stats[STAT_TIMER_ICON] = gi.imageindex("p_rebreather");
-		ent->client->ps.stats[STAT_TIMER] = (ent->client->breather_framenum - level.framenum) / 10;
+		ent->client->ps.stats[STAT_SNEAKER_ICON] = gi.imageindex("w_chaingun");
+		ent->client->ps.stats[STAT_SNEAKER] = (ent->client->sneaker_framenum - level.framenum) / 10;
 	}
 	else
 	{
-		ent->client->ps.stats[STAT_TIMER_ICON] = 0;
-		ent->client->ps.stats[STAT_TIMER] = 0;
+		ent->client->ps.stats[STAT_SNEAKER_ICON] = 0;
+		ent->client->ps.stats[STAT_SNEAKER] = 0;
 	}
 
-	
-	/*
-	if (ent->client->grenade_time) {
-		//gi.bprintf(PRINT_HIGH, "it works.\n");
-		gi.bprintf(PRINT_HIGH, "%i\n", (int)((ent->client->grenade_time - level.framenum) / -10));
-		ent->client->ps.stats[STAT_TIMER2_ICON] = gi.imageindex("a_grenades");
-		ent->client->ps.stats[STAT_TIMER2] = (int)((ent->client->grenade_time - level.framenum) / -10);
+
+	if (ent->client->reflect_framenum > level.framenum)
+	{
+		ent->client->ps.stats[STAT_REFLECT_ICON] = gi.imageindex("p_envirosuit");
+		ent->client->ps.stats[STAT_REFLECT] = (ent->client->reflect_framenum - level.framenum) / 10;
 	}
 	else
 	{
-		ent->client->ps.stats[STAT_TIMER2_ICON] = 0;
-		ent->client->ps.stats[STAT_TIMER2] = 0;
+		ent->client->ps.stats[STAT_REFLECT_ICON] = 0;
+		ent->client->ps.stats[STAT_REFLECT] = 0;
 	}
-	*/
+	
+
+	if (ent->client->laser_framenum > level.framenum)
+	{
+		ent->client->ps.stats[STAT_LASER_ICON] = gi.imageindex("p_rebreather");
+		ent->client->ps.stats[STAT_LASER] = (ent->client->laser_framenum - level.framenum) / 10;
+	}
+	else
+	{
+		ent->client->ps.stats[STAT_LASER_ICON] = 0;
+		ent->client->ps.stats[STAT_LASER] = 0;
+	}
+	
+
+	if (ent->client->tackler_framenum > level.framenum)
+	{
+		ent->client->ps.stats[STAT_TACKLER_ICON] = gi.imageindex("p_quad");
+		ent->client->ps.stats[STAT_TACKLER] = (ent->client->tackler_framenum - level.framenum) / 10;
+	}
+	else
+	{
+		ent->client->ps.stats[STAT_TACKLER_ICON] = 0;
+		ent->client->ps.stats[STAT_TACKLER] = 0;
+	}
+
+
+	
+	if (ent->client->grenade_time) {
+		//gi.bprintf(PRINT_HIGH, "it works.\n");
+		//gi.bprintf(PRINT_HIGH, "%i\n", (int)((ent->client->grenade_time - level.framenum) / -10));
+		ent->client->ps.stats[STAT_GTIMER_ICON] = gi.imageindex("a_grenades");
+		ent->client->ps.stats[STAT_GTIMER] = (int)((ent->client->grenade_time - level.framenum) / -10);
+	}
+	else
+	{
+		ent->client->ps.stats[STAT_GTIMER_ICON] = 0;
+		ent->client->ps.stats[STAT_GTIMER] = 0;
+	}
+	
 
 
 

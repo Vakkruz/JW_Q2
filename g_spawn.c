@@ -669,25 +669,54 @@ char *single_statusbar =
 "	yb	-50 "
 "endif "
 
-// timer
+//JW  TIMER 1: SNEAKER
 "if 9 "
-"	yb	-24 "		// New. Set Y-cursor -24 pixels from physical screen bottom
-"	xr	-58 "		// New. Set X-cursor -58 pixels from physical screen right
+"	yb	-24 "		
+"	xr	-58 "		
 "	num	2	10 "
-"	xr	-24 "		// New
+"	xr	-24 "		
 "	pic	9 "
 "endif "
 
 
-// JW - Timer2, which handles the positioning of the grenade timer.
-"if 16"
-"	yb	-48"
-"	xr	-58"
-"	num 2	17"
-"	xr	-24"
-"	pic	16"
-"end if"
+//JW  TIMER 2: REFLECT
 
+"if 18 "
+"	yb	-48 "
+"	xr	-58 "
+"	num 2	19 "
+"	xr	-24 "
+"	pic	18 "
+"endif"
+
+//JW  TIMER 3: LASER	
+
+"if 20 "			
+"	yb	-72 "		
+"	xr	-58 "		
+"	num	2	21 "	
+"	xr	-24 "		
+"	pic	20 "		
+"endif "			
+
+//JW  TIMER 4: TACKLER		
+"if 22 "			
+"	yb	-96 "		
+"	xr	-58 "		
+"	num	2	23 "	
+"	xr	-24 "		
+"	pic	22 "		
+"endif "
+
+
+//JW  TIMER 5: GRENADE TIMER
+"if 24 "
+"	yb	-144 "
+"	xr	-58 "
+"	num	2	25 "
+"	xr	-24 "
+"	pic	24 "
+"endif "
 
 //  help / weapon icon 
 "if 11 "

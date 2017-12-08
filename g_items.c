@@ -391,7 +391,7 @@ void	Use_Invulnerability (edict_t *ent, gitem_t *item)
 
 void	Use_Sneaker (edict_t *ent, gitem_t *item) {
 
-	//ent->client->pers.inventory[ITEM_INDEX(item)]--;
+	ent->client->pers.inventory[ITEM_INDEX(item)]--;
 	ValidateSelectedItem(ent);
 
 	if (ent->client->sneaker_framenum > level.framenum)
@@ -411,10 +411,50 @@ void	Use_Nuker(edict_t *ent, gitem_t *item) {
 
 	//JW: Let's see if this works :)
 	ent->flags ^= FL_GODMODE;
-	fire_grenade2(ent, ent->s.origin, ent->s.origin, 925, 1, 0, 940, false);
+	fire_grenade2(ent, ent->s.origin, ent->s.origin, 925, 1, 0, 740, false);
 	ent->flags ^= FL_GODMODE;
 }
 
+void	Use_Reflector(edict_t *ent, gitem_t *item) {
+
+	ValidateSelectedItem(ent);
+
+	if (ent->client->reflect_framenum > level.framenum)
+		ent->client->reflect_framenum += 200;
+	else
+		ent->client->reflect_framenum = level.framenum + 200;
+
+	gi.centerprintf(ent, "REFLECTOR POWER ENABLED\n");
+
+}
+
+void	Use_Tackler(edict_t *ent, gitem_t *item) {
+
+	ent->client->pers.inventory[ITEM_INDEX(item)]--;
+	ValidateSelectedItem(ent);
+
+
+	if (ent->client->tackler_framenum > level.framenum)
+		ent->client->tackler_framenum += 200;
+	else
+		ent->client->tackler_framenum = level.framenum + 200;
+
+	gi.centerprintf(ent, "TACKLER POWER ENABLED\n");
+
+}
+
+void	Use_Laser(edict_t *ent, gitem_t *item) {
+	ent->client->pers.inventory[ITEM_INDEX(item)]--;
+	ValidateSelectedItem(ent);
+
+
+	if (ent->client->laser_framenum > level.framenum)
+		ent->client->laser_framenum += 200;
+	else
+		ent->client->laser_framenum = level.framenum + 200;
+
+	gi.centerprintf(ent, "LASER POWER ENABLED\n");
+}
 
 //JW ========================================================================
 
@@ -1810,7 +1850,7 @@ always owned, never in the world
 		NULL, EF_ROTATE,
 		NULL,
 		"w_chaingun",
-		"Sneaker Man",
+		"Sneaker",
 		2,
 		60,
 		NULL,
@@ -1841,6 +1881,72 @@ always owned, never in the world
 		NULL,
 		0,
 		/* precache */ ""
+	},
+
+	//JW: REFLECTOR
+	{
+		"item_reflect",
+		Pickup_Powerup,
+		Use_Reflector,
+		Drop_General,
+		NULL,
+		"items/pkup.wav",
+		"models/items/enviro/tris.md2", EF_ROTATE,
+		NULL,
+		/* icon */		"p_envirosuit",
+		/* pickup */	"Reflector",
+		/* width */		2,
+		60,
+		NULL,
+		IT_STAY_COOP | IT_POWERUP,
+		0,
+		NULL,
+		0,
+		/* precache */ "items/airout.wav"
+	},
+
+	//JW: TACKLER
+	{
+		"item_tackler",
+		Pickup_Powerup,
+		Use_Tackler,
+		Drop_General,
+		NULL,
+		"items/pkup.wav",
+		"models/items/quaddama/tris.md2", EF_ROTATE,
+		NULL,
+		/* icon */		"p_quad",
+		/* pickup */	"Tackler",
+		/* width */		2,
+		60,
+		NULL,
+		IT_POWERUP,
+		0,
+		NULL,
+		0,
+		/* precache */ "items/damage.wav items/damage2.wav items/damage3.wav"
+	},
+
+	//JW: LASER
+	{
+		"item_laser",
+		Pickup_Powerup,
+		Use_Laser,
+		Drop_General,
+		NULL,
+		"items/pkup.wav",
+		"models/items/breather/tris.md2", EF_ROTATE,
+		NULL,
+		/* icon */		"p_rebreather",
+		/* pickup */	"Laser",
+		/* width */		2,
+		60,
+		NULL,
+		IT_STAY_COOP | IT_POWERUP,
+		0,
+		NULL,
+		0,
+		/* precache */ "items/airout.wav"
 	},
 
 /*QUAKED item_ancient_head (.3 .3 1) (-16 -16 -16) (16 16 16)

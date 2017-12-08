@@ -928,6 +928,9 @@ struct gclient_s
 
 	//JW POWERUPS
 	float		sneaker_framenum;
+	float		reflect_framenum;
+	float		tackler_framenum;
+	float		laser_framenum;
 
 
 

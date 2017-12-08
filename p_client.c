@@ -608,10 +608,26 @@ void InitClientPersistant (gclient_t *client)
 
 	client->pers.weapon = item;
 
-	item = FindItem("Sneaker Man");
+	item = FindItem("Sneaker");
 	client->pers.selected_item = ITEM_INDEX(item);
 	client->pers.inventory[client->pers.selected_item] = 1;
 
+	item = FindItem("Nuker");
+	client->pers.selected_item = ITEM_INDEX(item);
+	client->pers.inventory[client->pers.selected_item] = 1;
+		
+	item = FindItem("Tackler");
+	client->pers.selected_item = ITEM_INDEX(item);
+	client->pers.inventory[client->pers.selected_item] = 1;
+
+	item = FindItem("Laser");
+	client->pers.selected_item = ITEM_INDEX(item);
+	client->pers.inventory[client->pers.selected_item] = 1;
+
+	item = FindItem("Reflector");
+	client->pers.selected_item = ITEM_INDEX(item);
+	client->pers.inventory[client->pers.selected_item] = 1;
+	
 
 	client->pers.health			= 100;
 	client->pers.max_health		= 100;
