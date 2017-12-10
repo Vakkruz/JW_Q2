@@ -89,7 +89,13 @@ qboolean fire_hit (edict_t *self, vec3_t aim, int damage, int kick)
 	VectorSubtract (point, self->enemy->s.origin, dir);
 
 	// do the damage
-	T_Damage (tr.ent, self, self, dir, point, vec3_origin, damage, kick/2, DAMAGE_NO_KNOCKBACK, MOD_HIT);
+
+	if (tr.ent->client && tr.ent->client->reflect_framenum > level.framenum) {
+		//gi.bprintf(PRINT_HIGH, "it works.\n");
+		T_Damage(self, self, self, dir, point, vec3_origin, damage*2, kick / 2, DAMAGE_NO_KNOCKBACK, MOD_HIT);
+	}
+	else
+		T_Damage (tr.ent, self, self, dir, point, vec3_origin, damage, kick/2, DAMAGE_NO_KNOCKBACK, MOD_HIT);
 
 	if (!(tr.ent->svflags & SVF_MONSTER) && (!tr.ent->client))
 		return false;
