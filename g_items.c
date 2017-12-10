@@ -387,7 +387,7 @@ void	Use_Invulnerability (edict_t *ent, gitem_t *item)
 	gi.sound(ent, CHAN_ITEM, gi.soundindex("items/protect.wav"), 1, ATTN_NORM, 0);
 }
 
-//JW ========================================================================
+//JW POWERUPS ========================================================================
 
 void	Use_Sneaker (edict_t *ent, gitem_t *item) {
 
@@ -395,9 +395,9 @@ void	Use_Sneaker (edict_t *ent, gitem_t *item) {
 	ValidateSelectedItem(ent);
 
 	if (ent->client->sneaker_framenum > level.framenum)
-		ent->client->sneaker_framenum += 300;
+		ent->client->sneaker_framenum += 200;
 	else
-		ent->client->sneaker_framenum = level.framenum + 300;
+		ent->client->sneaker_framenum = level.framenum + 200;
 
 	gi.centerprintf(ent, "SNEAKER POWER ENABLED\n");
 
@@ -426,6 +426,9 @@ void	Use_Reflector(edict_t *ent, gitem_t *item) {
 
 	gi.centerprintf(ent, "REFLECTOR POWER ENABLED\n");
 
+	gi.sound(ent, CHAN_ITEM, gi.soundindex("items/protect.wav"), 1, ATTN_NORM, 0);
+
+
 }
 
 void	Use_Tackler(edict_t *ent, gitem_t *item) {
@@ -441,19 +444,57 @@ void	Use_Tackler(edict_t *ent, gitem_t *item) {
 
 	gi.centerprintf(ent, "TACKLER POWER ENABLED\n");
 
+	gi.sound(ent, CHAN_ITEM, gi.soundindex("items/protect.wav"), 1, ATTN_NORM, 0);
+
+
 }
 
+//JW: Just a copy of P_ProjectSource from the p_weapon.c file. Helps the Railgun aim properly
+static void P_ProjectSource2(gclient_t *client, vec3_t point, vec3_t distance, vec3_t forward, vec3_t right, vec3_t result)
+{
+	vec3_t	_distance;
+
+	VectorCopy(distance, _distance);
+	if (client->pers.hand == LEFT_HANDED)
+		_distance[1] *= -1;
+	else if (client->pers.hand == CENTER_HANDED)
+		_distance[1] = 0;
+	G_ProjectSource(point, _distance, forward, right, result);
+}
+
+
+
+
 void	Use_Laser(edict_t *ent, gitem_t *item) {
+
+	vec3_t		start;
+	vec3_t		forward, right;
+	vec3_t		offset;
+
 	ent->client->pers.inventory[ITEM_INDEX(item)]--;
 	ValidateSelectedItem(ent);
 
-
+	/*
 	if (ent->client->laser_framenum > level.framenum)
 		ent->client->laser_framenum += 200;
 	else
 		ent->client->laser_framenum = level.framenum + 200;
 
 	gi.centerprintf(ent, "LASER POWER ENABLED\n");
+
+		*/
+
+	AngleVectors(ent->client->v_angle, forward, right, NULL);
+
+	VectorScale(forward, -3, ent->client->kick_origin);
+	ent->client->kick_angles[0] = -3;
+
+	VectorSet(offset, 0, 7, ent->viewheight - 8);
+	P_ProjectSource2(ent->client, ent->s.origin, offset, forward, right, start);
+	fire_rail(ent, start, forward, 900, 0);
+
+	//gi.sound(ent, CHAN_ITEM, gi.soundindex("items/protect.wav"), 1, ATTN_NORM, 0);
+
 }
 
 //JW ========================================================================
@@ -1558,7 +1599,7 @@ always owned, never in the world
 */
 	{
 		"weapon_railgun", 
-		NULL,
+		Pickup_Weapon, //NULL,
 		Use_Weapon,
 		Drop_Weapon,
 		Weapon_Railgun,
