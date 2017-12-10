@@ -1,7 +1,7 @@
-#Bomb Squad: A Quake II mod by Joshua W.
+# Bomb Squad: A Quake II mod by Joshua W.
 ========================================
 
-##Gameplay
+## Gameplay
 ==========
 
 You are John Quakeman II, a new recruit for bomb disposal. Your job is to carry the bomb, a live grenade, to the end of each level before detonation! 
