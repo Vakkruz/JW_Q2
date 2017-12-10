@@ -687,7 +687,7 @@ char *single_statusbar =
 "	num 2	19 "
 "	xr	-24 "
 "	pic	18 "
-"endif"
+"endif "
 
 //JW  TIMER 3: LASER	
 
