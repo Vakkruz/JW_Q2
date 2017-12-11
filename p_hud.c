@@ -471,7 +471,7 @@ void G_SetStats (edict_t *ent)
 		ent->client->ps.stats[STAT_LASER] = 0;
 	}
 	
-
+	/*
 	if (ent->client->tackler_framenum > level.framenum)
 	{
 		ent->client->ps.stats[STAT_TACKLER_ICON] = gi.imageindex("p_quad");
@@ -482,7 +482,7 @@ void G_SetStats (edict_t *ent)
 		ent->client->ps.stats[STAT_TACKLER_ICON] = 0;
 		ent->client->ps.stats[STAT_TACKLER] = 0;
 	}
-
+	*/
 
 	
 	if (ent->client->grenade_time) {

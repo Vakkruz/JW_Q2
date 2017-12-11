@@ -699,6 +699,7 @@ char *single_statusbar =
 "	pic	20 "		
 "endif "			
 
+/*
 //JW  TIMER 4: TACKLER		
 "if 22 "			
 "	yb	-96 "		
@@ -707,7 +708,7 @@ char *single_statusbar =
 "	xr	-24 "		
 "	pic	22 "		
 "endif "
-
+*/
 
 //JW  TIMER 5: GRENADE TIMER
 "if 24 "

@@ -947,6 +947,11 @@ struct gclient_s
 
 	float		respawn_time;		// can respawn when time > this
 
+	//JW
+	qboolean	thrusting; //1 is on 0 is off
+	float		next_thrust_sound;
+
+
 	edict_t		*chase_target;		// player we are chasing
 	qboolean	update_chase;		// need to update chase info?
 };

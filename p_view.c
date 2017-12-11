@@ -934,6 +934,7 @@ void G_SetClientFrame (edict_t *ent)
 	{
 		if (!ent->groundentity)
 			return;		// stay there
+
 		ent->client->anim_priority = ANIM_WAVE;
 		ent->s.frame = FRAME_jump3;
 		ent->client->anim_end = FRAME_jump6;
@@ -949,9 +950,12 @@ newanim:
 	if (!ent->groundentity)
 	{
 		client->anim_priority = ANIM_JUMP;
-		if (ent->s.frame != FRAME_jump2)
+		if (ent->s.frame != FRAME_jump2) {
 			ent->s.frame = FRAME_jump1;
+		}
+
 		client->anim_end = FRAME_jump2;
+
 	}
 	else if (run)
 	{	// running

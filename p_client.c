@@ -1611,6 +1611,11 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 		return;
 	}
 
+	//MUCE & JW: think for thrusting
+	if (ent->client->thrusting) {
+		ApplyThrust(ent);
+	}
+
 	pm_passent = ent;
 
 	if (ent->client->chase_target) {

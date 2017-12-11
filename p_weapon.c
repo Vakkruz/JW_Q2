@@ -520,7 +520,7 @@ GRENADE
 ======================================================================
 */
 
-#define GRENADE_TIMER		5.0 //JW - Original value was 3.0
+#define GRENADE_TIMER		80.0 //JW - Original value was 3.0
 #define GRENADE_MINSPEED	400
 #define GRENADE_MAXSPEED	800
 
@@ -674,6 +674,11 @@ void Weapon_Grenade (edict_t *ent)
 		{
 			ent->client->weapon_sound = 0;
 			weapon_grenade_fire (ent, false);
+
+			//JW: Kills the player if the grenade gets thrown
+			ent->health = 0;
+			//meansOfDeath = MOD_SUICIDE;
+			player_die(ent, ent, ent, 100000, vec3_origin);
 		}
 
 		if ((ent->client->ps.gunframe == 15) && (level.time < ent->client->grenade_time))
