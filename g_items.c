@@ -435,23 +435,6 @@ void	Use_Reflector(edict_t *ent, gitem_t *item) {
 
 }
 
-void	Use_Tackler(edict_t *ent, gitem_t *item) {
-
-	ent->client->pers.inventory[ITEM_INDEX(item)]--;
-	ValidateSelectedItem(ent);
-
-
-	if (ent->client->tackler_framenum > level.framenum)
-		ent->client->tackler_framenum += 200;
-	else
-		ent->client->tackler_framenum = level.framenum + 200;
-
-	gi.centerprintf(ent, "TACKLER POWER ENABLED\n");
-
-	gi.sound(ent, CHAN_ITEM, gi.soundindex("items/protect.wav"), 1, ATTN_NORM, 0);
-
-
-}
 
 //JW: Just a copy of P_ProjectSource from the p_weapon.c file. Helps the Railgun aim properly
 static void P_ProjectSource2(gclient_t *client, vec3_t point, vec3_t distance, vec3_t forward, vec3_t right, vec3_t result)
@@ -1938,28 +1921,6 @@ always owned, never in the world
 		NULL,
 		0,
 		/* precache */ "items/airout.wav"
-	},
-
-	//JW: TACKLER
-	{
-		"item_tackler",
-		Pickup_Powerup,
-		Use_Tackler,
-		Drop_General,
-		NULL,
-		"items/pkup.wav",
-		"models/items/quaddama/tris.md2", EF_ROTATE,
-		NULL,
-		/* icon */		"p_quad",
-		/* pickup */	"Tackler",
-		/* width */		2,
-		60,
-		NULL,
-		IT_POWERUP,
-		0,
-		NULL,
-		0,
-		/* precache */ "items/damage.wav items/damage2.wav items/damage3.wav"
 	},
 
 	//JW: LASER

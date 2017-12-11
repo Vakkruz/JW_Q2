@@ -991,12 +991,13 @@ typedef enum
 #define STAT_SPECTATOR			17
 #define STAT_REFLECT_ICON		18
 #define STAT_REFLECT			19
-#define	STAT_LASER_ICON			20
-#define STAT_LASER				21
+#define	STAT_NUKER_ICON			20
+#define STAT_NUKER				21
 #define STAT_TACKLER_ICON		22
 #define STAT_TACKLER			23
 #define STAT_GTIMER_ICON		24
 #define STAT_GTIMER				25
+#define STAT_SCORE				26
 
 
 #define	MAX_STATS				32
