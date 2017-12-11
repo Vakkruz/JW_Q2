@@ -409,10 +409,14 @@ void	Use_Nuker(edict_t *ent, gitem_t *item) {
 	//ent->client->pers.inventory[ITEM_INDEX(item)]--;
 	ValidateSelectedItem(ent);
 
-	//JW: Let's see if this works :)
-	ent->flags ^= FL_GODMODE;
-	fire_grenade2(ent, ent->s.origin, ent->s.origin, 925, 1, 0, 740, false);
-	ent->flags ^= FL_GODMODE;
+
+	if (ent->client->nuker_framenum > level.framenum)
+		ent->client->nuker_framenum += 200;
+	else
+		ent->client->nuker_framenum = level.framenum + 200;
+
+	gi.centerprintf(ent, "NUKER POWER ENABLED\n");
+
 }
 
 void	Use_Reflector(edict_t *ent, gitem_t *item) {
@@ -473,16 +477,6 @@ void	Use_Laser(edict_t *ent, gitem_t *item) {
 
 	ent->client->pers.inventory[ITEM_INDEX(item)]--;
 	ValidateSelectedItem(ent);
-
-	/*
-	if (ent->client->laser_framenum > level.framenum)
-		ent->client->laser_framenum += 200;
-	else
-		ent->client->laser_framenum = level.framenum + 200;
-
-	gi.centerprintf(ent, "LASER POWER ENABLED\n");
-
-		*/
 
 	AngleVectors(ent->client->v_angle, forward, right, NULL);
 

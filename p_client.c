@@ -605,7 +605,7 @@ void InitClientPersistant (gclient_t *client)
 	item = FindItem("Grenades");
 	client->pers.selected_item = ITEM_INDEX(item);
 	client->pers.inventory[client->pers.selected_item] = 1;
-
+	
 	client->pers.weapon = item;
 
 	item = FindItem("Sneaker");
@@ -640,6 +640,7 @@ void InitClientPersistant (gclient_t *client)
 	client->pers.max_slugs		= 50;
 
 	client->pers.connected = true;
+
 }
 
 

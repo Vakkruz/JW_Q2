@@ -930,7 +930,7 @@ struct gclient_s
 	float		sneaker_framenum;
 	float		reflect_framenum;
 	float		tackler_framenum;
-	float		laser_framenum;
+	float		nuker_framenum;
 
 
 

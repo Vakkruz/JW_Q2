@@ -520,7 +520,7 @@ GRENADE
 ======================================================================
 */
 
-#define GRENADE_TIMER		20.0 //JW - Original value was 3.0
+#define GRENADE_TIMER		5.0 //JW - Original value was 3.0
 #define GRENADE_MINSPEED	400
 #define GRENADE_MAXSPEED	800
 
@@ -635,7 +635,7 @@ void Weapon_Grenade (edict_t *ent)
 				//JW: If the difficulty is on easy, give the player an extra 20 seconds. On medium, give 'em 10. On hard, default.
 				if (skill->value == 0) 
 					ent->client->grenade_time = level.time + GRENADE_TIMER + 20;
-				if (skill->value == 1)
+				else if (skill->value == 1)
 					ent->client->grenade_time = level.time + GRENADE_TIMER + 10;
 				else 
 					ent->client->grenade_time = level.time + GRENADE_TIMER;

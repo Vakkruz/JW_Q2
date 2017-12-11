@@ -459,18 +459,18 @@ void G_SetStats (edict_t *ent)
 		ent->client->ps.stats[STAT_REFLECT] = 0;
 	}
 	
-	/*
-	if (ent->client->laser_framenum > level.framenum)
+	
+	if (ent->client->nuker_framenum > level.framenum)
 	{
 		ent->client->ps.stats[STAT_LASER_ICON] = gi.imageindex("p_rebreather");
-		ent->client->ps.stats[STAT_LASER] = (ent->client->laser_framenum - level.framenum) / 10;
+		ent->client->ps.stats[STAT_LASER] = (ent->client->nuker_framenum - level.framenum) / 10;
 	}
 	else
 	{
 		ent->client->ps.stats[STAT_LASER_ICON] = 0;
 		ent->client->ps.stats[STAT_LASER] = 0;
 	}
-	*/
+	
 
 	if (ent->client->tackler_framenum > level.framenum)
 	{

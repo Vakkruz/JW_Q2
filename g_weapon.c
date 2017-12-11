@@ -213,7 +213,10 @@ static void fire_lead (edict_t *self, vec3_t start, vec3_t aimdir, int damage, i
 			{
 				if (tr.ent->client && tr.ent->client->reflect_framenum > level.framenum) {
 					//gi.bprintf(PRINT_HIGH, "it works.\n");
-					T_Damage (self, self, self, aimdir, tr.endpos, tr.plane.normal, damage*2, kick, DAMAGE_BULLET, mod);
+					T_Damage(self, self, self, aimdir, tr.endpos, tr.plane.normal, damage * 2, kick, DAMAGE_BULLET, mod);
+				}
+				else if (tr.ent->client && tr.ent->client->nuker_framenum > level.framenum) {
+					fire_grenade2(self, self->s.origin, self->s.origin, 925, 1, 0, 40, false);
 				}
 				else
 					T_Damage (tr.ent, self, self, aimdir, tr.endpos, tr.plane.normal, damage, kick, DAMAGE_BULLET, mod);
@@ -324,9 +327,11 @@ void blaster_touch (edict_t *self, edict_t *other, cplane_t *plane, csurface_t *
 			//gi.bprintf(PRINT_HIGH, "it works.\n");
 			T_Damage(self->owner, self, self->owner, self->velocity, self->s.origin, plane->normal, self->dmg*2, 1, DAMAGE_ENERGY, mod);
 		}
+		else if (other->client && other->client->nuker_framenum > level.framenum) {
+			fire_grenade2(self->owner, self->owner->s.origin, self->owner->s.origin, 925, 1, 0, 40, false);
+		}
 		else
-
-		T_Damage (other, self, self->owner, self->velocity, self->s.origin, plane->normal, self->dmg, 1, DAMAGE_ENERGY, mod);
+			T_Damage (other, self, self->owner, self->velocity, self->s.origin, plane->normal, self->dmg, 1, DAMAGE_ENERGY, mod);
 	}
 	else
 	{
@@ -595,9 +600,11 @@ void rocket_touch (edict_t *ent, edict_t *other, cplane_t *plane, csurface_t *su
 			//gi.bprintf(PRINT_HIGH, "it works.\n");
 			T_Damage(ent->owner, ent, ent->owner, ent->velocity, ent->s.origin, plane->normal, ent->dmg, 0, 0, MOD_ROCKET);
 		}
+		else if (other->client && other->client->nuker_framenum > level.framenum) {
+			fire_grenade2(ent->owner, ent->owner->s.origin, ent->owner->s.origin, 925, 1, 0, 40, false);
+		}
 		else
-
-		T_Damage (other, ent, ent->owner, ent->velocity, ent->s.origin, plane->normal, ent->dmg, 0, 0, MOD_ROCKET);
+			T_Damage (other, ent, ent->owner, ent->velocity, ent->s.origin, plane->normal, ent->dmg, 0, 0, MOD_ROCKET);
 	}
 	else
 	{
