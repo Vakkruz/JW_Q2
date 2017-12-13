@@ -822,9 +822,12 @@ typedef struct
 	int			health;
 	int			max_health;
 	int			savedFlags;
+	int         fuel_cells;
+	int         max_fuel;
 
 	int			selected_item;
 	int			inventory[MAX_ITEMS];
+
 
 	// ammo capacities
 	int			max_bullets;
@@ -949,6 +952,7 @@ struct gclient_s
 	//JW
 	qboolean	thrusting; //1 is on 0 is off
 	float		next_thrust_sound;
+
 
 
 	edict_t		*chase_target;		// player we are chasing

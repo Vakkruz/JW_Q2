@@ -998,6 +998,8 @@ typedef enum
 #define STAT_GTIMER_ICON		24
 #define STAT_GTIMER				25
 #define STAT_SCORE				26
+#define STAT_FUEL_ICON			27
+#define STAT_FUEL				28
 
 
 #define	MAX_STATS				32

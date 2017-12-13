@@ -623,6 +623,11 @@ void InitClientPersistant (gclient_t *client)
 	item = FindItem("Reflector");
 	client->pers.selected_item = ITEM_INDEX(item);
 	client->pers.inventory[client->pers.selected_item] = 1;
+
+
+
+	client->pers.fuel_cells		= 50;
+	client->pers.max_fuel		= 50;
 	
 
 	client->pers.health			= 100;
@@ -636,7 +641,6 @@ void InitClientPersistant (gclient_t *client)
 	client->pers.max_slugs		= 50;
 
 	client->pers.connected = true;
-
 }
 
 
@@ -1587,7 +1591,7 @@ This will be called once for each client frame, which will
 usually be a couple times for each server frame.
 ==============
 */
-void ClientThink (edict_t *ent, usercmd_t *ucmd)
+void ClientThink(edict_t *ent, usercmd_t *ucmd)
 {
 	gclient_t	*client;
 	edict_t	*other;
@@ -1601,16 +1605,25 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 	{
 		client->ps.pmove.pm_type = PM_FREEZE;
 		// can exit intermission after five seconds
-		if (level.time > level.intermissiontime + 5.0 
-			&& (ucmd->buttons & BUTTON_ANY) )
+		if (level.time > level.intermissiontime + 5.0
+			&& (ucmd->buttons & BUTTON_ANY))
 			level.exitintermission = true;
 		return;
 	}
 
-	//MUCE & JW: think for thrusting
-	if (ent->client->thrusting) {
+
+	//MUCE: think for thrusting
+	gi.bprintf(PRINT_HIGH, "%i\n", ent->client->pers.fuel_cells);
+	if ((ent->client->thrusting) && !(ent->client->pers.fuel_cells == 0)) {
 		ApplyThrust(ent);
+		ent->client->pers.fuel_cells--; //When they're flying, use fuel
 	}
+
+	//JW: If they're not thrusting/flying, regen fuel
+	else if (!(ent->client->thrusting) && !(ent->client->pers.fuel_cells > ent->client->pers.max_fuel)) {
+		ent->client->pers.fuel_cells++;
+	}
+
 
 	pm_passent = ent;
 

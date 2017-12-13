@@ -11,6 +11,6 @@ To help you, enemies do slightly less damage on average and you have a few power
 * Laser [Default Key: **F**] : Very self-explanatory. For those few moments in Quake 2 where you need to actually shoot something to progress.
 * Reflector [Default Key: **V**] : Enemy shots get "reflected" right back at them! Doesn't visually reflect it, but the damage gets applied to them instead of you.
 * Nuker [Default Key: **E**] : Too many Strogg in your face? Just nuke 'em with the Nuker! Similar to the Reflector, but blasts away anything in your immediate vicinity.
-* Jetpack [Default Key: **Ctrl+Space**] : Exactly what it sounds like. Very helpful for skipping huge chunks of a level.
+* Jetpack [Default Key: **Hold Ctrl+Space**] : Exactly what it sounds like. Very helpful for skipping huge chunks of a level. You only get 50 fuel units, so use it wisely.
 
 

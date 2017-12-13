@@ -370,9 +370,11 @@ void G_SetStats (edict_t *ent)
 
 
 	//
-	//JW - Grenade Timer
+	//JW - FUEL UNITS
 	//
 
+	ent->client->ps.stats[STAT_FUEL_ICON] = gi.imageindex("a_cells");
+	ent->client->ps.stats[STAT_FUEL] = ent->client->pers.fuel_cells;
 
 
 	//

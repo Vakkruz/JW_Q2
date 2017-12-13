@@ -90,7 +90,9 @@ void Move_Begin (edict_t *ent)
 	ent->think = Move_Final;
 }
 
+
 void Think_AccelMove (edict_t *ent);
+
 
 void Move_Calc (edict_t *ent, vec3_t dest, void(*func)(edict_t*))
 {

@@ -669,7 +669,9 @@ char *single_statusbar =
 "	yb	-50 "
 "endif "
 
+
 //JW  TIMER 1: SNEAKER
+
 "if 9 "
 "	yb	-24 "		
 "	xr	-58 "		
@@ -699,18 +701,8 @@ char *single_statusbar =
 "	pic	20 "		
 "endif "			
 
-/*
-//JW  TIMER 4: TACKLER		
-"if 22 "			
-"	yb	-96 "		
-"	xr	-58 "		
-"	num	2	23 "	
-"	xr	-24 "		
-"	pic	22 "		
-"endif "
-*/
-
 //JW  TIMER 5: GRENADE TIMER
+
 "if 24 "
 "	yb	-144 "
 "	xr	-58 "
@@ -724,6 +716,19 @@ char *single_statusbar =
 "	xv	148 "
 "	pic	11 "
 "endif "
+
+
+//JW: FUEL UNITS
+
+"if 27 "
+"	yb	-300 "
+"	xr	-78 "
+"	num 3	28 "
+"	xr	-24 "
+"	pic	27 "
+"endif "
+
+
 ;
 
 char *dm_statusbar =
