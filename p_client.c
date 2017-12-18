@@ -626,8 +626,8 @@ void InitClientPersistant (gclient_t *client)
 
 
 
-	client->pers.fuel_cells		= 50;
-	client->pers.max_fuel		= 50;
+	client->pers.fuel_cells		= 35;
+	client->pers.max_fuel		= 35;
 	
 
 	client->pers.health			= 100;
@@ -1613,7 +1613,7 @@ void ClientThink(edict_t *ent, usercmd_t *ucmd)
 
 
 	//MUCE: think for thrusting
-	gi.bprintf(PRINT_HIGH, "%i\n", ent->client->pers.fuel_cells);
+	//gi.bprintf(PRINT_HIGH, "%i\n", ent->client->pers.fuel_cells);
 	if ((ent->client->thrusting) && !(ent->client->pers.fuel_cells == 0)) {
 		ApplyThrust(ent);
 		ent->client->pers.fuel_cells--; //When they're flying, use fuel

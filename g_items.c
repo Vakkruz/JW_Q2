@@ -391,7 +391,7 @@ void	Use_Invulnerability (edict_t *ent, gitem_t *item)
 
 void	Use_Sneaker (edict_t *ent, gitem_t *item) {
 
-	ent->client->pers.inventory[ITEM_INDEX(item)]--;
+	//ent->client->pers.inventory[ITEM_INDEX(item)]--;
 	ValidateSelectedItem(ent);
 
 	if (ent->client->sneaker_framenum > level.framenum)
@@ -421,6 +421,7 @@ void	Use_Nuker(edict_t *ent, gitem_t *item) {
 
 void	Use_Reflector(edict_t *ent, gitem_t *item) {
 
+	//ent->client->pers.inventory[ITEM_INDEX(item)]--;
 	ValidateSelectedItem(ent);
 
 	if (ent->client->reflect_framenum > level.framenum)
@@ -458,7 +459,7 @@ void	Use_Laser(edict_t *ent, gitem_t *item) {
 	vec3_t		forward, right;
 	vec3_t		offset;
 
-	ent->client->pers.inventory[ITEM_INDEX(item)]--;
+	//ent->client->pers.inventory[ITEM_INDEX(item)]--;
 	ValidateSelectedItem(ent);
 
 	AngleVectors(ent->client->v_angle, forward, right, NULL);

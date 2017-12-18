@@ -11,6 +11,15 @@ To help you, enemies do slightly less damage on average and you have a few power
 * Laser [Default Key: **F**] : Very self-explanatory. For those few moments in Quake 2 where you need to actually shoot something to progress.
 * Reflector [Default Key: **V**] : Enemy shots get "reflected" right back at them! Doesn't visually reflect it, but the damage gets applied to them instead of you.
 * Nuker [Default Key: **E**] : Too many Strogg in your face? Just nuke 'em with the Nuker! Similar to the Reflector, but blasts away anything in your immediate vicinity.
-* Jetpack [Default Key: **Hold Ctrl+Space**] : Exactly what it sounds like. Very helpful for skipping huge chunks of a level. You only get 50 fuel units, so use it wisely.
+* Jetpack [Default Key: **Hold Ctrl+Space**] : Exactly what it sounds like. Very helpful for skipping huge chunks of a level. Originally based off of [this tutorial](https://www.quakewiki.net/archives/qdevels/quake2/17_1_98.html) from the QDeveLS website with some changes (dramatically lowered thrust velocity/height and added in fuel mechanic)
 
+## Installation
 
+The "Misc Files" folder comes with an autoexec.cfg file, shortcut and compiled .dll file. I have the **GOG** version of Quake 2, not the Steam version, and the install folder for Q2 is on a seperate drive on my computer. This means that the shortcut is pointing to that location. If you want to use the shortcut properly (and assuming you're using the default Steam locations), change the target and "Start In" fields to this:
+
+* Target: "C:\Program Files (x86)\Steam\steamapps\common\Quake II\quake2.exe"
+* Start in: "C:\Program Files (x86)\Steam\steamapps\common\Quake II"
+
+Keep the ending parameters (the "+set game") untouched.
+
+When you're all set, create a new folder in the root of your Q2 folder called 'bombsquad' and place the .dll and autoexec file there. Launch the game from your shortcut and you're golden!

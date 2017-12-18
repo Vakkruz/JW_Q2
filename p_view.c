@@ -445,7 +445,7 @@ void SV_CalcBlend (edict_t *ent)
 		if (remaining == 30)	// beginning to fade
 			gi.sound(ent, CHAN_ITEM, gi.soundindex("items/protect2.wav"), 1, ATTN_NORM, 0);
 		if (remaining > 30 || (remaining & 4))
-			SV_AddBlend(1, 1, 0, 0.08, ent->client->ps.blend);
+			SV_AddBlend(0.2, 0.8, 1, 0.1, ent->client->ps.blend);
 	}
 
 
@@ -455,15 +455,17 @@ void SV_CalcBlend (edict_t *ent)
 		if (remaining == 30)	// beginning to fade
 			gi.sound(ent, CHAN_ITEM, gi.soundindex("items/airout.wav"), 1, ATTN_NORM, 0);
 		if (remaining > 30 || (remaining & 4))
-			SV_AddBlend(0.4, 1, 0.4, 0.04, ent->client->ps.blend);
+			SV_AddBlend(1, 0, 0.4, 0.1, ent->client->ps.blend);
 	}
+
+
 	else if (ent->client->reflect_framenum > level.framenum)
 	{
 		remaining = ent->client->reflect_framenum - level.framenum;
 		if (remaining == 30)	// beginning to fade
 			gi.sound(ent, CHAN_ITEM, gi.soundindex("items/airout.wav"), 1, ATTN_NORM, 0);
 		if (remaining > 30 || (remaining & 4))
-			SV_AddBlend(0, 1, 0, 0.08, ent->client->ps.blend);
+			SV_AddBlend(0, 0, 1, 0.08, ent->client->ps.blend);
 	}
 
 
