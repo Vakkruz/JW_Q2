@@ -520,7 +520,7 @@ GRENADE
 ======================================================================
 */
 
-#define GRENADE_TIMER		80.0 //JW - Original value was 3.0
+#define GRENADE_TIMER		80.0 //Vakk - Original value was 3.0
 #define GRENADE_MINSPEED	400
 #define GRENADE_MAXSPEED	800
 
@@ -529,7 +529,7 @@ void weapon_grenade_fire (edict_t *ent, qboolean held)
 	vec3_t	offset;
 	vec3_t	forward, right;
 	vec3_t	start;
-	int		damage = 925; //JW - Original value was 125
+	int		damage = 925; //Vakk - Original value was 125
 	float	timer;
 	int		speed;
 	float	radius;
@@ -632,13 +632,19 @@ void Weapon_Grenade (edict_t *ent)
 			if (!ent->client->grenade_time)
 			{
 				
-				//JW: If the difficulty is on easy, give the player an extra 20 seconds. On medium, give 'em 10. On hard, default.
-				if (skill->value == 0) 
+				//Vakk: If the difficulty is on easy, give the player an extra 20 seconds. On medium, give 'em 10. On hard, default.
+				if (skill->value == 0) {
 					ent->client->grenade_time = level.time + GRENADE_TIMER + 20;
-				else if (skill->value == 1)
+					ent->client->grenade_framenum += 1020;
+				}
+				else if (skill->value == 1) {
 					ent->client->grenade_time = level.time + GRENADE_TIMER + 10;
-				else 
+					ent->client->grenade_framenum += 920;
+				}
+				else {
 					ent->client->grenade_time = level.time + GRENADE_TIMER;
+					ent->client->grenade_framenum += 820;
+				}
 				
 
 				ent->client->weapon_sound = gi.soundindex("weapons/hgrenc1b.wav");
@@ -675,7 +681,7 @@ void Weapon_Grenade (edict_t *ent)
 			ent->client->weapon_sound = 0;
 			weapon_grenade_fire (ent, false);
 
-			//JW: Kills the player if the grenade gets thrown
+			//Vakk: Kills the player if the grenade gets thrown
 			ent->health = 0;
 			//meansOfDeath = MOD_SUICIDE;
 			player_die(ent, ent, ent, 100000, vec3_origin);

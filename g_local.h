@@ -929,10 +929,23 @@ struct gclient_s
 	float		breather_framenum;
 	float		enviro_framenum;
 
-	//JW POWERUPS
+	//Vakk POWERUPS
 	float		sneaker_framenum;
 	float		reflect_framenum;
 	float		nuker_framenum;
+
+	//other timers
+	float		grenade_framenum;
+
+	//cooldowns
+	float		sneaker_cool;
+	qboolean	sneak_use;
+
+	float		reflect_cool;
+	qboolean	reflect_use;
+
+	float		nuke_cool;
+	qboolean	nuke_use;
 
 
 
@@ -949,7 +962,7 @@ struct gclient_s
 
 	float		respawn_time;		// can respawn when time > this
 
-	//JW
+	//Vakk
 	qboolean	thrusting; //1 is on 0 is off
 	float		next_thrust_sound;
 

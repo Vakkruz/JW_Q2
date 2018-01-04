@@ -438,7 +438,7 @@ void SV_CalcBlend (edict_t *ent)
 			SV_AddBlend (1, 1, 0, 0.08, ent->client->ps.blend);
 	}
 
-	// JW ===============================
+	// Vakk ===============================
 
 	else if (ent->client->sneaker_framenum > level.framenum) {
 		remaining = ent->client->sneaker_framenum - level.framenum;
@@ -469,7 +469,7 @@ void SV_CalcBlend (edict_t *ent)
 	}
 
 
-	//JW ================================
+	//Vakk ================================
 
 	else if (ent->client->enviro_framenum > level.framenum)
 	{
@@ -613,7 +613,7 @@ void P_WorldEffects (void)
 	sneaker = current_client->sneaker_framenum > level.framenum;
 
 
-	//JW : Checks to see if the user has an active Sneaker powerup
+	//Vakk : Checks to see if the user has an active Sneaker powerup
 	if (sneaker) {
 		//gi.bprintf(PRINT_HIGH, "it works.\n");
 		current_player->flags |= FL_NOTARGET;

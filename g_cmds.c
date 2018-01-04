@@ -992,7 +992,7 @@ void ClientCommand (edict_t *ent)
 		Cmd_PutAway_f (ent);
 	else if (Q_stricmp (cmd, "wave") == 0)
 		Cmd_Wave_f (ent);
-	// JW: This line allows us to call the thrusters
+	// Vakk: This line allows us to call the thrusters
 	else if (Q_stricmp(cmd, "thrust") == 0)
 		Cmd_Thrust_f(ent);
 	else if (Q_stricmp(cmd, "playerlist") == 0)

@@ -29,7 +29,7 @@ void MoveClientToIntermission (edict_t *ent)
 	ent->client->invincible_framenum = 0;
 	ent->client->breather_framenum = 0;
 	ent->client->enviro_framenum = 0;
-	ent->client->sneaker_framenum = 0; //JW
+	ent->client->sneaker_framenum = 0; //Vakk
 	ent->client->grenade_blew_up = false;
 	ent->client->grenade_time = 0;
 
@@ -370,7 +370,7 @@ void G_SetStats (edict_t *ent)
 
 
 	//
-	//JW - FUEL UNITS
+	//Vakk - FUEL UNITS
 	//
 
 	ent->client->ps.stats[STAT_FUEL_ICON] = gi.imageindex("a_cells");
@@ -475,11 +475,9 @@ void G_SetStats (edict_t *ent)
 	
 
 	
-	if (ent->client->grenade_time) {
-		//gi.bprintf(PRINT_HIGH, "it works.\n");
-		//gi.bprintf(PRINT_HIGH, "%i\n", (int)((ent->client->grenade_time - level.framenum) / -10));
+	if (ent->client->grenade_framenum > level.framenum) {
 		ent->client->ps.stats[STAT_GTIMER_ICON] = gi.imageindex("a_grenades");
-		ent->client->ps.stats[STAT_GTIMER] = (int)((ent->client->grenade_time - level.framenum) / -10);
+		ent->client->ps.stats[STAT_GTIMER] = (int)((ent->client->grenade_framenum - level.framenum) / 10);
 	}
 	else
 	{

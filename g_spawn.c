@@ -448,6 +448,7 @@ All but the first will have the FL_TEAMSLAVE flag set.
 All but the last will have the teamchain field set to the next one
 ================
 */
+
 void G_FindTeams (void)
 {
 	edict_t	*e, *e2, *chain;
@@ -670,7 +671,7 @@ char *single_statusbar =
 "endif "
 
 
-//JW  TIMER 1: SNEAKER
+//Vakk  TIMER 1: SNEAKER
 
 "if 9 "
 "	yb	-24 "		
@@ -681,7 +682,7 @@ char *single_statusbar =
 "endif "
 
 
-//JW  TIMER 2: REFLECT
+//Vakk  TIMER 2: REFLECT
 
 "if 18 "
 "	yb	-48 "
@@ -691,7 +692,7 @@ char *single_statusbar =
 "	pic	18 "
 "endif "
 
-//JW  TIMER 3: LASER	
+//Vakk  TIMER 3: LASER	
 
 "if 20 "			
 "	yb	-72 "		
@@ -701,7 +702,7 @@ char *single_statusbar =
 "	pic	20 "		
 "endif "			
 
-//JW  TIMER 5: GRENADE TIMER
+//Vakk  TIMER 5: GRENADE TIMER
 
 "if 24 "
 "	yb	-144 "
@@ -718,7 +719,7 @@ char *single_statusbar =
 "endif "
 
 
-//JW: FUEL UNITS
+//Vakk: FUEL UNITS
 
 "if 27 "
 "	yb	-300 "

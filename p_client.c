@@ -529,7 +529,7 @@ void player_die (edict_t *self, edict_t *inflictor, edict_t *attacker, int damag
 	self->client->sneaker_framenum = 0;
 	self->flags &= ~FL_POWER_ARMOR;
 
-	//JW
+	//Vakk
 	self->flags &= ~FL_NOTARGET;
 
 	if (self->health < -40)
@@ -601,7 +601,7 @@ void InitClientPersistant (gclient_t *client)
 
 	client->pers.weapon = item;
 
-	//JW - Player is now equipped with grenades and powerups at spawn
+	//Vakk - Player is now equipped with grenades and powerups at spawn
 	item = FindItem("Grenades");
 	client->pers.selected_item = ITEM_INDEX(item);
 	client->pers.inventory[client->pers.selected_item] = 1;
@@ -628,6 +628,8 @@ void InitClientPersistant (gclient_t *client)
 
 	client->pers.fuel_cells		= 35;
 	client->pers.max_fuel		= 35;
+
+	//client->weaponstate = WEAPON_READY;
 	
 
 	client->pers.health			= 100;
@@ -1597,6 +1599,7 @@ void ClientThink(edict_t *ent, usercmd_t *ucmd)
 	edict_t	*other;
 	int		i, j;
 	pmove_t	pm;
+	gitem_t		*item;
 
 	level.current_entity = ent;
 	client = ent->client;
@@ -1619,11 +1622,40 @@ void ClientThink(edict_t *ent, usercmd_t *ucmd)
 		ent->client->pers.fuel_cells--; //When they're flying, use fuel
 	}
 
-	//JW: If they're not thrusting/flying, regen fuel
+	//Vakk: If they're not thrusting/flying, regen fuel
 	else if (!(ent->client->thrusting) && !(ent->client->pers.fuel_cells > ent->client->pers.max_fuel)) {
 		ent->client->pers.fuel_cells++;
 	}
 
+	//==================================================================================================
+
+	//Vakk: The code below sets up the cooldown mechanic for all three powerups. How time works in Q2 is
+	//		really weird and it was tricky getting the *_cool variables to subtract properly. Since powerups
+	//		and a lot of things on some sort of timer use the level.framenum in some way, I figured I try to 
+	//		do the same thing. Unfortunately that wasn't working as I wanted.
+
+	//		After some experimenting, I decided to forgo using level.framenum and settle with having the game
+	//		subtract a number from the *_cool varible every frame after the powerup has ended. Since the max
+	//		framerate for most is gonna be 60, this works out quite nicely. Lord have mercy on your soul if you're
+	//		playing above or below 60fps lol
+
+
+
+	item = FindItem("Sneaker");
+	//Vakk: Sets up cool down for powerups
+	if ((ent->client->sneak_use) && (ent->client->sneaker_framenum < level.framenum) && !(ent->client->sneaker_cool == 0)) {
+		//gi.bprintf(PRINT_HIGH, "it works.\n");
+		ent->client->sneaker_cool --;
+		gi.bprintf(PRINT_HIGH, "%f\n", ent->client->sneaker_cool);
+	}
+	else if ((ent->client->sneaker_cool == 0) && (ent->client->sneak_use)) {
+		ent->client->pers.selected_item = ITEM_INDEX(item);
+		ent->client->pers.inventory[client->pers.selected_item] = 1;
+		ent->client->sneak_use = 0;
+		gi.centerprintf(ent, "SNEAKER READY\n");
+	}
+
+	//======================================================================================================
 
 	pm_passent = ent;
 

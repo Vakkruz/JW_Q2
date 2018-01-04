@@ -387,22 +387,28 @@ void	Use_Invulnerability (edict_t *ent, gitem_t *item)
 	gi.sound(ent, CHAN_ITEM, gi.soundindex("items/protect.wav"), 1, ATTN_NORM, 0);
 }
 
-//JW POWERUPS ========================================================================
+//Vakk POWERUPS ========================================================================
 
 void	Use_Sneaker (edict_t *ent, gitem_t *item) {
 
-	//ent->client->pers.inventory[ITEM_INDEX(item)]--;
+	ent->client->pers.inventory[ITEM_INDEX(item)]--;
 	ValidateSelectedItem(ent);
 
-	if (ent->client->sneaker_framenum > level.framenum)
+	if (ent->client->sneaker_framenum > level.framenum) {
 		ent->client->sneaker_framenum += 200;
-	else
+	}
+	else {
 		ent->client->sneaker_framenum = level.framenum + 200;
+		ent->client->sneaker_cool = 2400; //Vakk: Sets cooldown for 24 seconds
+	}
+
+	ent->client->sneak_use = 1;
 
 	gi.centerprintf(ent, "SNEAKER POWER ENABLED\n");
 
 	gi.sound(ent, CHAN_ITEM, gi.soundindex("items/protect.wav"), 1, ATTN_NORM, 0);
 }
+
 
 void	Use_Nuker(edict_t *ent, gitem_t *item) {
 
@@ -437,7 +443,7 @@ void	Use_Reflector(edict_t *ent, gitem_t *item) {
 }
 
 
-//JW: Just a copy of P_ProjectSource from the p_weapon.c file. Helps the Railgun aim properly
+//Vakk: Just a copy of P_ProjectSource from the p_weapon.c file. Helps the Railgun aim properly
 static void P_ProjectSource2(gclient_t *client, vec3_t point, vec3_t distance, vec3_t forward, vec3_t right, vec3_t result)
 {
 	vec3_t	_distance;
@@ -475,7 +481,7 @@ void	Use_Laser(edict_t *ent, gitem_t *item) {
 
 }
 
-//JW ========================================================================
+//Vakk ========================================================================
 
 
 //======================================================================
@@ -1393,7 +1399,7 @@ always owned, never in the world
 */
 	{
 		"weapon_shotgun", 
-		NULL, //JW - All the weapons will be set to 'NULL' for picking up
+		NULL, //Vakk - All the weapons will be set to 'NULL' for picking up
 		Use_Weapon,
 		Drop_Weapon,
 		Weapon_Shotgun,
@@ -1858,7 +1864,7 @@ always owned, never in the world
 	},
 
 
-// JW: SNEAKER
+// Vakk: SNEAKER
 	{
 		"item_sneaker",
 		Pickup_Powerup,
@@ -1880,7 +1886,7 @@ always owned, never in the world
 		/* precache */ ""
 	},
 
-// JW: NUKER
+// Vakk: NUKER
 	{
 		"item_nuker",
 		Pickup_Powerup,
@@ -1902,7 +1908,7 @@ always owned, never in the world
 		/* precache */ ""
 	},
 
-	//JW: REFLECTOR
+	//Vakk: REFLECTOR
 	{
 		"item_reflect",
 		Pickup_Powerup,
@@ -1924,7 +1930,7 @@ always owned, never in the world
 		/* precache */ "items/airout.wav"
 	},
 
-	//JW: LASER
+	//Vakk: LASER
 	{
 		"item_laser",
 		Pickup_Powerup,
